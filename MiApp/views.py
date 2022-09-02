@@ -20,4 +20,7 @@ def salida(request):
     salir.save()
     return render(request,"Apps/salida.html", contexto)
 
+def inicio(request):
+    return render(request, 'index.html')
+
 

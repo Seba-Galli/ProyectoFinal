@@ -1,12 +1,8 @@
 
 from django.contrib import admin
-from django.urls import path
-
-from MiApp.views import entrada, estacionamiento, salida
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estacionamiento/', estacionamiento),
-    path('entrada/', entrada),
-    path('salida/', salida),
+    path('MiApp/', include ('MiApp.urls'))
 ]
