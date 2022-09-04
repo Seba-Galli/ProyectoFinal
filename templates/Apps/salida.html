@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF=8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width-device-widht, initial-scale=1.0">
-    <title>Salida</title>
-</head>
-<body>
-Su {{salida.vehiculo}} con patente nro {{salida.patente}} con su conductor llamado {{salida.nombre}} acaba de salir.
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block title %}
+Salida
+{% endblock %}
+
+{% block inicio %}
+
+    Su vehiculo es un: {{salida.vehiculo}}
+    <br>
+    Patente nro: {{salida.patente}}
+    <br>
+    Nombre del conductor: {{salida.nombre}}
+    <br>
+    Acaba de salir.
+    <br>
+
+{% endblock %}
