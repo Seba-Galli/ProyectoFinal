@@ -2,6 +2,17 @@ from django.shortcuts import render
 
 from .models import Entrada, Salida, Estacionamiento
 
+from MiApp.forms import Estac_Form
+
+def estacion_form(request):
+    contexto = {
+        'form': Estac_Form()
+    }
+
+    return render(request,"Apps/estacion_form.html", contexto)
+
+
+
 def estacionamiento(request):
     estacionar = Estacionamiento(PrecioHora="300", hora_ingreso="2022-08-30 15:00:00", hora_egreso= "2022-08-30 17:00:00")
     contexto = {'estacionamiento': estacionar}
