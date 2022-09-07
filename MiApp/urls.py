@@ -1,5 +1,6 @@
 from django.urls import path
-from MiApp.views import inicio, estacionamiento, entrada, salida, estacion_form
+from MiApp.views import inicio, estacionamiento, entrada, salida, estacion_form, busqueda_estac, busqueda_estac_post
+
 
 urlpatterns = [
     path('', inicio, name='MiAppInicio'),
@@ -7,4 +8,6 @@ urlpatterns = [
     path('entrada/', entrada, name='AppEntrada'),
     path('salida/', salida, name='AppSalida'),
     path('estacion_form/', estacion_form, name='AppEstacionamientoForm'),
+    path('busqueda_estac/', busqueda_estac, name='AppBusquedaHora'),
+    path('busqueda_estac_post/', busqueda_estac_post, name='AppBusquedaEstacPost'),
 ]

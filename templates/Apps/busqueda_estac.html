@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Busqueda precio de hora
+{% endblock %}
+
+{% block inicio %}
+
+    <form action="/Apps/busqueda_estac.post" method="GET">
+    
+    {% csrf_token %}
+    
+        {{ form.as_p }}
+        
+        <input type="submit" value="Buscar">
+
+    </form>
+
+    
+
+{% endblock %}

@@ -1,8 +1,27 @@
 from django.shortcuts import redirect, render
 
-from MiApp.forms import Estac_Form
+from MiApp.forms import Estac_Form, BusquedaEstacForm
 
 from .models import Entrada, Estacionamiento, Salida
+
+def busqueda_estac_post(request):
+    PrecioHora = request.GET.get('PrecioHora')
+
+    estacionamientos = Estacionamiento.objects.filter(PrecioHora__icontains=PrecioHora)
+
+    contexto = {
+        'estacionamientos': estacionamientos
+    }
+
+    return render(request,"Apps/estacion_filtrado.html", contexto)
+
+def busqueda_estac(request):
+    contexto = {
+        'form': BusquedaEstacForm()
+    }
+
+    return render(request, 'Apps/busqueda_estac.html', contexto)
+
 
 
 def estacion_form(request):
