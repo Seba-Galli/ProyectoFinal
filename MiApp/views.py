@@ -1,12 +1,31 @@
-from django.shortcuts import render
-
-from .models import Entrada, Salida, Estacionamiento
+from django.shortcuts import redirect, render
 
 from MiApp.forms import Estac_Form
 
+from .models import Entrada, Estacionamiento, Salida
+
+
 def estacion_form(request):
+
+    if request.method == "POST":
+        mi_formulario = Estac_Form(request.POST)
+        print(mi_formulario)
+
+        if mi_formulario.is_valid():
+        
+            data = mi_formulario.cleaned_data
+
+            estacionar = Estacionamiento(PrecioHora=data.get('PrecioHora'), hora_ingreso=data.get('hora_ingreso'), hora_egreso=data.get('hora_salida'))
+            
+            estacionar.save()
+
+            return redirect('AppEstacionamientoForm')
+
+    estacionamientos = Estacionamiento.objects.all()
+            
     contexto = {
-        'form': Estac_Form()
+        'form': Estac_Form(),
+        'estacionamientos': estacionamientos
     }
 
     return render(request,"Apps/estacion_form.html", contexto)
@@ -14,7 +33,7 @@ def estacion_form(request):
 
 
 def estacionamiento(request):
-    estacionar = Estacionamiento(PrecioHora="300", hora_ingreso="2022-08-30 15:00:00", hora_egreso= "2022-08-30 17:00:00")
+    estacionar = Estacionamiento(PrecioHora="400", hora_ingreso="2022-09-06 15:00:00", hora_egreso= "2022-09-06 16:00:00")
     contexto = {'estacionamiento': estacionar}
     estacionar.save()
     return render(request,"Apps/estacionamiento.html", contexto)
