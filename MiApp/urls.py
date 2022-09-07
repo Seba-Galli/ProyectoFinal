@@ -9,5 +9,5 @@ urlpatterns = [
     path('salida/', salida, name='AppSalida'),
     path('estacion_form/', estacion_form, name='AppEstacionamientoForm'),
     path('busqueda_estac/', busqueda_estac, name='AppBusquedaHora'),
-    path('busqueda_estac_post/', busqueda_estac_post, name='AppBusquedaEstacPost'),
+    path('busqueda_estac_post/', busqueda_estac_post, name='AppBusquedaHoraPost'),
 ]
