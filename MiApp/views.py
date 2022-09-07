@@ -9,13 +9,12 @@ def estacion_form(request):
 
     if request.method == "POST":
         mi_formulario = Estac_Form(request.POST)
-        print(mi_formulario)
 
         if mi_formulario.is_valid():
         
             data = mi_formulario.cleaned_data
 
-            estacionar = Estacionamiento(PrecioHora=data.get('PrecioHora'), hora_ingreso=data.get('hora_ingreso'), hora_egreso=data.get('hora_salida'))
+            estacionar = Estacionamiento(PrecioHora=data.get('PrecioHora'), hora_ingreso=data.get('hora_ingreso'), hora_egreso=data.get('hora_egreso'))
             
             estacionar.save()
 
