@@ -16,15 +16,4 @@ Estacionamiento formulario
 
     </form>
 
-    {{% for estacion in estacionamientos %}
-
-        El precio de la hora es: {{ estacion.PrecioHora }}
-        <br>
-        Hora de entrada: {{ estacion.hora_ingreso }}
-        <br>
-        Hora de egreso: {{ estacion.hora_egreso }}
-        <br>
-    
-    {% endfor %}}
-
 {% endblock %}

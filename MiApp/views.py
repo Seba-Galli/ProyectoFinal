@@ -4,6 +4,17 @@ from MiApp.forms import Estac_Form, BusquedaEstacForm
 
 from .models import Entrada, Estacionamiento, Salida
 
+from django.contrib import messages
+
+
+def eliminar_estacionamiento(request, PrecioHora):
+    precio_eliminar = Estacionamiento.objects.get(PrecioHora=PrecioHora)
+    precio_eliminar.delete()
+
+    messages.info(request, f'El precio {precio_eliminar}, fue eliminado')
+
+    return redirect('AppEstacionamiento')
+
 def busqueda_estac_post(request):
     PrecioHora = request.GET.get('PrecioHora')
 
@@ -37,13 +48,10 @@ def estacion_form(request):
             
             estacionar.save()
 
-            return redirect('AppEstacionamientoForm')
-
-    estacionamientos = Estacionamiento.objects.all()
-            
+            return redirect('AppEstacionamiento')
+        
     contexto = {
-        'form': Estac_Form(),
-        'estacionamientos': estacionamientos
+        'form': Estac_Form()
     }
 
     return render(request,"Apps/estacion_form.html", contexto)
@@ -51,9 +59,12 @@ def estacion_form(request):
 
 
 def estacionamiento(request):
-    estacionar = Estacionamiento(PrecioHora="400", hora_ingreso="2022-09-06 15:00:00", hora_egreso= "2022-09-06 16:00:00")
-    contexto = {'estacionamiento': estacionar}
-    estacionar.save()
+    estacionamientos = Estacionamiento.objects.all()
+            
+    contexto = {
+        'estacionamientos': estacionamientos
+    }
+
     return render(request,"Apps/estacionamiento.html", contexto)
 
 def entrada(request):

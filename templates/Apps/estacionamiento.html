@@ -6,10 +6,13 @@ Estacionamiento
 
 {% block inicio %}
 
-    El precio de la hora es: {{estacionamiento.PrecioHora}}
-    <br>
-    Su fecha y hora de entrada es: {{estacionamiento.hora_ingreso}}
-    <br>
-    Su fecha y hora de salida es: {{estacionamiento.hora_egreso}}
+    {% for estacion in estacionamientos %}
+
+        El precio de la hora es: {{ estacion.PrecioHora }}
+        <a href="{% url 'AppPrecioEliminar' estacion.PrecioHora %}">-X-</a>
+        <br>
+        <br>
+    
+    {% endfor %}
 
 {% endblock %}
